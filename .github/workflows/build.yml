@@ -1,13 +1,121 @@
+# Per-target UF2 artifacts (like zmk-corne-wireless-colemak), not one merged "firmware" zip.
+name: Build
 
 on: [push, pull_request, workflow_dispatch]
 
 jobs:
   build:
-    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - board: nice_nano/nrf52840/zmk
+            shield: charybdis_left
+            artifact: charybdis_left.uf2
+          - board: nice_nano/nrf52840/zmk
+            shield: charybdis_right
+            artifact: charybdis_right.uf2
+          - board: nice_nano/nrf52840/zmk
+            shield: charybdis_dongle
+            artifact: charybdis_dongle.uf2
+            snippet: studio-rpc-usb-uart
+            cmake_extra: -DCONFIG_ZMK_STUDIO=y
+    runs-on: ubuntu-latest
+    container:
+      image: zmkfirmware/zmk-build-arm:stable
+    name: Build ${{ matrix.shield }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Cache west modules
+        uses: actions/cache@v4
+        env:
+          cache-name: cache-zephyr-modules
+        with:
+          path: |
+            modules/
+            tools/
+            zephyr/
+            bootloader/
+            zmk/
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('config/west.yml', 'build.yaml', 'boards-module/**') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+
+      - name: West init / update / zephyr-export
+        shell: bash
+        run: |
+          set -euxo pipefail
+          west init -l config
+          west update --fetch-opt=--filter=tree:0
+          west zephyr-export
+
+      - name: West Build
+        shell: bash
+        run: |
+          set -euxo pipefail
+          west_args=()
+          if [ -n "${{ matrix.snippet }}" ]; then
+            west_args+=(-S "${{ matrix.snippet }}")
+          fi
+          west build -s zmk/app -b "${{ matrix.board }}" "${west_args[@]}" -- \
+            -DZMK_CONFIG="${GITHUB_WORKSPACE}/config" \
+            -DSHIELD="${{ matrix.shield }}" \
+            "-DZMK_EXTRA_MODULES=${GITHUB_WORKSPACE}/boards-module" \
+            ${{ matrix.cmake_extra }}
+
+      - name: Check build status
+        run: |
+          if [ -f build/zephyr/zmk.uf2 ]; then
+            echo "Build successful."
+          else
+            echo "zmk.uf2 not found"
+            exit 1
+          fi
+
+      - name: Rename zmk.uf2
+        run: cp build/zephyr/zmk.uf2 "${{ matrix.artifact }}"
+
+      - name: Upload firmware
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.shield }}
+          path: ${{ matrix.artifact }}
+
+  firmware-bundle:
+    name: Bundle left + right + dongle
+    needs: build
+    runs-on: ubuntu-latest
+    if: ${{ !cancelled() }}
+    steps:
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: firmware
+          pattern: charybdis_*
+          merge-multiple: false
+
+      - name: Pack charybdis.zip
+        run: |
+          set -euxo pipefail
+          mkdir -p dist
+          cp firmware/charybdis_left/charybdis_left.uf2 dist/left.uf2
+          cp firmware/charybdis_right/charybdis_right.uf2 dist/right.uf2
+          cp firmware/charybdis_dongle/charybdis_dongle.uf2 dist/dongle.uf2
+          zip -j charybdis.zip dist/left.uf2 dist/right.uf2 dist/dongle.uf2
+          ls -la dist/ charybdis.zip
+
+      - name: Upload bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: charybdis
+          path: charybdis.zip
 
   keymap_images:
     needs: build
     permissions:
       contents: write
     uses: ./.github/workflows/draw_keymaps.yaml
-    # credit to https://github.com/caksoylar/keymap-drawer
