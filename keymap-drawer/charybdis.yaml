@@ -1,47 +1,89 @@
 layout: {zmk_keyboard: charybdis, layout_name: charybdis_6col_layout}
 layers:
-  Base:
-  - {t: ESCAPE, h: Function}
+  Colemak:
+  - TAB
   - Q
   - W
-  - E
-  - R
-  - T
-  - Y
+  - F
+  - P
+  - G
+  - J
+  - L
   - U
+  - Y
+  - ;
+  - {t: ESCAPE, h: Function}
+  - LSHFT
+  - A
+  - R
+  - S
+  - T
+  - D
+  - H
+  - N
+  - E
   - I
   - O
-  - P
-  - '['
-  - TAB
-  - {t: A, h: LGUI}
-  - {t: S, h: LALT}
-  - {t: D, h: LSHFT}
-  - {t: F, h: LCTRL}
-  - G
-  - H
-  - {t: J, h: RCTRL}
-  - {t: K, h: RSHFT}
-  - {t: L, h: RALT}
-  - {t: ;, h: LGUI}
   - ''''
-  - LSHFT
+  - LCTRL
   - Z
-  - {t: X, h: Ctl+ X}
-  - {t: C, h: Ctl+ C}
+  - X
+  - C
   - V
-  - {t: B, h: Ctl+ V}
-  - N
+  - B
+  - K
   - M
   - ','
   - .
   - /
-  - ']'
+  - LGUI
+  - {t: '&macro_to_rus', h: LALT}
+  - Lower
+  - SPACE
+  - RET
+  - Raise
+  Russian:
+  - TAB
+  - Q
+  - W
+  - E
+  - R
+  - {t: T, h: '`'}
+  - Y
+  - U
+  - {t: I, h: O}
+  - P
+  - '['
+  - {t: ESCAPE, h: Function}
+  - LSHFT
+  - A
+  - S
+  - D
+  - F
+  - G
+  - H
+  - J
+  - K
+  - L
+  - ;
+  - ''''
   - LCTRL
-  - Symbol
-  - {t: RET, h: LGUI}
-  - {t: SPACE, h: Number}
-  - BSPC
+  - Z
+  - X
+  - C
+  - V
+  - B
+  - N
+  - {t: M, h: ']'}
+  - ','
+  - .
+  - /
+  - LGUI
+  - {t: '&macro_to_eng', h: LALT}
+  - Lower
+  - SPACE
+  - RET
+  - Raise
   Mouse:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -51,207 +93,333 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
+  - '&mkp MB3'
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - LGUI
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - Screen
+  - '&mkp MB1'
+  - Scroll
+  - '&mkp MB2'
+  - Mouse Shift
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - BACK
+  - FWD
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
   - LALT
-  - LSHFT
-  - LCTRL
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - '&mkp MB1'
-  - '&mkp MB2'
-  - '&mkp MB3'
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - Number
-  - Symbol
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - '&mkp MB1'
-  - '&mkp MB2'
-  - '&mkp MB3'
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  Symbol:
-  - {t: ▽, type: trans}
-  - ''
-  - ''
-  - '{'
-  - '}'
-  - '|'
-  - '`'
-  - '~'
-  - <
-  - '>'
-  - \
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - ''
-  - ''
-  - (
-  - )
-  - ':'
-  - +
-  - '-'
-  - /
+  Lower:
+  - TAB
+  - PSCRN
+  - DEL
+  - UP
+  - BSPC
+  - PGUP
   - '*'
-  - ''''
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - ''
-  - ''
-  - '['
-  - ']'
-  - '?'
-  - '&'
-  - '='
-  - _
-  - .
-  - '"'
-  - {t: ▽, type: trans}
-  - ''
-  - {type: held}
-  - {t: ▽, type: trans}
-  - ''
-  - ''
-  Number:
-  - {t: ▽, type: trans}
-  - ''
   - '7'
   - '8'
   - '9'
-  - ''
-  - ''
-  - PG UP
-  - UP
-  - PG DN
-  - ''
+  - /
+  - ESCAPE
+  - LSHFT
+  - HOME
+  - LEFT
+  - DOWN
+  - RIGHT
+  - END
+  - +
+  - '4'
+  - '5'
+  - '6'
+  - '-'
   - {t: ▽, type: trans}
+  - LCTRL
   - {t: ▽, type: trans}
-  - LGUI
-  - {t: '4', h: LALT}
-  - {t: '5', h: LSHFT}
-  - {t: '6', h: LCTRL}
-  - ''
-  - ''
-  - {t: LEFT, h: RCTRL}
-  - {t: DOWN, h: RSHFT}
-  - {t: RIGHT, h: RALT}
-  - RGUI
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - ''
+  - VOL DN
+  - MUTE
+  - VOL UP
+  - PGDN
+  - '0'
   - '1'
   - '2'
   - '3'
-  - Ctl+ -
-  - Ctl+ =
-  - HOME
-  - {t: ▽, type: trans}
-  - END
-  - ''
-  - {t: ▽, type: trans}
   - .
-  - '0'
+  - {t: ▽, type: trans}
+  - LALT
+  - {type: held}
   - SPACE
+  - RET
+  - {t: ▽, type: trans}
+  Raise:
+  - TAB
+  - '!'
+  - '@'
+  - '#'
+  - $
+  - '%'
+  - ^
+  - '&'
+  - '*'
+  - (
+  - )
+  - ESCAPE
+  - LSHFT
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - '-'
+  - '='
+  - '['
+  - ']'
+  - \
+  - '`'
+  - LCTRL
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - _
+  - +
+  - '{'
+  - '}'
+  - '|'
+  - '~'
+  - LALT
+  - {t: ▽, type: trans}
+  - SPACE
+  - RET
   - {type: held}
-  - ''
   Function:
-  - {type: held}
-  - Ctl+Alt+ DEL
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - DEV TOOLS
   - F7
   - F8
   - F9
-  - F10
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
   - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - ''
+  - {type: held}
+  - BT CLR
+  - {t: BT, h: '0'}
+  - {t: BT, h: '1'}
+  - {t: BT, h: '2'}
+  - {t: BT, h: '3'}
+  - {t: BT, h: '4'}
+  - F11
   - F4
   - F5
   - F6
-  - F11
-  - ''
-  - LCTRL
-  - LSHFT
-  - LALT
-  - LGUI
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - ''
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - F10
   - F1
   - F2
   - F3
-  - DEV TOOLS
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - {t: ▽, type: trans}
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  Game:
-  - ESCAPE
-  - ESCAPE
-  - Q
-  - W
-  - E
-  - R
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - LCTRL
-  - A
-  - S
-  - D
-  - F
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  Scroll:
   - ''
-  - '&mkp MB1'
-  - '&mkp MB2'
+  - ''
+  - ''
+  - '&msc MOVE_Y((ZMK_POINTING_DEFAULT_SCRL_VAL * 16))'
+  - ''
+  - ''
+  - ''
+  - ''
   - '&mkp MB3'
   - ''
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - LSHIFT
-  - Z
-  - X
-  - C
-  - V
-  - '1'
-  - '2'
-  - '3'
-  - '4'
-  - '5'
-  - {t: ▽, type: trans}
-  - LALT
-  - SPACE
-  - M
-  - T
-  - B
+  - ''
+  - ''
+  - ''
+  - ''
+  - '&msc MOVE_X(-(ZMK_POINTING_DEFAULT_SCRL_VAL * 16))'
+  - '&msc MOVE_Y(-(ZMK_POINTING_DEFAULT_SCRL_VAL * 16))'
+  - '&msc MOVE_X((ZMK_POINTING_DEFAULT_SCRL_VAL * 16))'
+  - ''
+  - ''
+  - '&mkp MB1'
+  - {type: held}
+  - '&mkp MB2'
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - BACK
+  - FWD
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - Scroll Shift
+  Mouse Shift:
+  - ''
+  - ''
+  - ''
+  - '&mmv MOVE_Y(-(ZMK_POINTING_DEFAULT_MOVE_VAL))'
+  - ''
+  - ''
+  - ''
+  - ''
+  - '&mkp MB3'
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - '&mmv MOVE_X(-(ZMK_POINTING_DEFAULT_MOVE_VAL))'
+  - '&mmv MOVE_Y((ZMK_POINTING_DEFAULT_MOVE_VAL))'
+  - '&mmv MOVE_X((ZMK_POINTING_DEFAULT_MOVE_VAL))'
+  - ''
+  - ''
+  - '&mkp MB1'
+  - Scroll
+  - '&mkp MB2'
+  - {type: held}
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - BACK
+  - FWD
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - Mouse Shift
+  Scroll Shift:
+  - ''
+  - ''
+  - ''
+  - '&msc MOVE_Y(((ZMK_POINTING_DEFAULT_SCRL_VAL * 16) * 3))'
+  - ''
+  - ''
+  - ''
+  - ''
+  - '&mkp MB3'
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - '&msc MOVE_X(-((ZMK_POINTING_DEFAULT_SCRL_VAL * 16) * 3))'
+  - '&msc MOVE_Y(-((ZMK_POINTING_DEFAULT_SCRL_VAL * 16) * 3))'
+  - '&msc MOVE_X(((ZMK_POINTING_DEFAULT_SCRL_VAL * 16) * 3))'
+  - ''
+  - ''
+  - '&mkp MB1'
+  - {type: held}
+  - '&mkp MB2'
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - BACK
+  - FWD
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - {t: Scroll Shift, type: held}
+  Screen:
+  - ''
+  - ''
+  - ''
+  - Gui+ TAB
+  - ''
+  - ''
+  - ''
+  - ''
+  - '&mkp MB3'
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - Ctl+Gui+ LEFT
+  - Gui+ D
+  - Ctl+Gui+ RIGHT
+  - ''
+  - {type: held}
+  - '&mkp MB1'
+  - ''
+  - '&mkp MB2'
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - BACK
+  - FWD
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
   Reset:
   - {t: ▽, type: trans}
   - ''
@@ -290,7 +458,7 @@ layers:
   - ''
   - {t: ▽, type: trans}
   - ''
-  - ''
+  - BOOT LDR
   - BOOT LDR
   - BOOT LDR
   - ''
@@ -299,14 +467,8 @@ combos:
   k: {t: Reset, h: toggle}
 - p: [25, 29]
   k: {t: Reset, h: toggle}
-- p: [32, 33]
+- p: [37, 38]
   k: BOOT LDR
-- p: [7, 8]
-  k: {t: Base, h: toggle}
-- p: [27, 28]
-  k: {t: Function, h: sticky}
-- p: [5, 9]
-  k: {t: Game, h: toggle}
 - p: [1, 2]
   k: ESCAPE
 - p: [2, 3]

@@ -1,0 +1,11 @@
+# ZMK / west (created by local Docker or west build) — leading / = repo root only
+.west/
+/zmk/
+/zephyr/
+/modules/
+/bootloader/
+/tools/
+build/
+
+# Local build output
+dist/
